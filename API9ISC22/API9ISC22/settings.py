@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'API9ISC22.wsgi.application'
+WSGI_APPLICATION = 'gunicorn API9ISC22.wsgi.application'
 # gunicorn controlisc.wsgi:application
 
 # Database
