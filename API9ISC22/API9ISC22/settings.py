@@ -65,7 +65,7 @@ TEMPLATES = [
     {
         # os.path.join(BASE_DIR, 'templates')
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,8 +141,18 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 
 
-# CRISPY_TEMPLATE_PACK = 'bootstrap4'  # O el paquete de plantillas que desees utilizar
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'victormanuel135613@gmail.com'
+EMAIL_HOST_PASSWORD = 'dbuh omtv odfb isuq'
+
+# AUTH_USER_MODEL = 'myapp.CustomUser'
+
 
