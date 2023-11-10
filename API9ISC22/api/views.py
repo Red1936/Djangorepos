@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMessage, send_mail
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.utils.crypto import get_random_string
@@ -41,7 +42,9 @@ def register(request):
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(request, user)
 
-            return redirect('home')
+            return redirect('products')
+        return redirect('home')
+    
     else:
         user_creation_form = CustomUserCreationForm()  # Inicializa el formulario en caso de solicitud 'GET'
 
@@ -81,7 +84,11 @@ def contact(request):
 
 
 
-
 def exit(request):
     logout(request)
     return redirect('home')
+
+
+
+
+

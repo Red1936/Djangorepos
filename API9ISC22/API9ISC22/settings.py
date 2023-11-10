@@ -73,7 +73,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
                 # 'django.template.context_processors.request',
                 # 'crispy_forms.context_processors.crispy_forms_context',
             ],
@@ -85,15 +84,22 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'API9ISC22.wsgi.application'
-
+# gunicorn controlisc.wsgi:application
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME':'dbred',
+        'USER': 'red',
+        'PASSWORD': '0SAc4lv6QGtoaG7IMnGEe4DLXokzWVgB',
+        'HOST': 'oregon-postgres.render.com',  # O la dirección IP de tu servidor PostgreSQL
+        'PORT': '5432',           # Deja en blanco para usar el puerto predeterminado (5432)
+        
     }
 }
 
@@ -146,13 +152,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 
 
+# AUTH_USER_MODEL = 'myapp.CustomUser'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'victormanuel135613@gmail.com'
 EMAIL_HOST_PASSWORD = 'dbuh omtv odfb isuq'
-
-# AUTH_USER_MODEL = 'myapp.CustomUser'
-
-

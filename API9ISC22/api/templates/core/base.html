@@ -36,15 +36,49 @@
     </div>
   </header>
 
+  
+
+
+
+
+
   {% block content %}{% endblock %}
 
   {% if request.user.is_authenticated %}
     <a class="btn btn-outline-light" href={% url 'exit' %}>Cerrar Sesión</a>
   {% endif %}
 
+  <h1>Calificar esta página</h1>
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <div class="rating">
+      <input type="radio" name="rating" id="star5" value="5" />
+      <label for="star5">5</label>
+      <input type="radio" name="rating" id="star4" value="4" />
+      <label for="star4">4</label>
+      <input type="radio" name="rating" id="star3" value="3" />
+      <label for="star3">3</label>
+      <input type="radio" name="rating" id="star2" value="2" />
+      <label for="star2">2</label>
+      <input type="radio" name="rating" id="star1" value="1" />
+      <label for="star1">1</label>
+    </div>
+    
+    <button type="submit">Enviar Calificación</button>
+</form>
+
+
+
+
+
+
   <footer class="mt-auto text-white-50">
     <p>Redgames <a href="#" class="text-white">Insta</a>, por <a href="#" class="text-white">@Red1936</a>.</p>
   </footer>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   </body>
 </html>
