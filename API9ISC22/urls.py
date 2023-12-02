@@ -13,19 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from api.views import exit, home, products, register
 from django.contrib import admin
 from django.urls import include, path
+from social_django.views import complete, disconnect
+
+from api.views import carrito, comprar, exit, home, products, register
 
 urlpatterns = [
     
     # path('', include('API9ISC22.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.socialaccount.urls')),
     path('', home, name='home'),
     path('products/', products, name='products'),
     path('logout/', exit, name='exit'),
     path('register/', register, name='register'),
-
+    path('social-auth/', include('social_django.urls', namespace='social')),
     
+    path('carrito/', carrito, name='carrito_de_compras'),
+    path('comprar/', comprar,name='comprar_videojuego'),
+     
 ]

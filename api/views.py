@@ -1,4 +1,3 @@
-from api.forms import CustomUserCreationForm
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, get_user_model, login, logout
@@ -11,6 +10,8 @@ from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.utils.crypto import get_random_string
 from rest_framework.views import APIView
+
+from api.forms import CustomUserCreationForm
 
 
 class Home(APIView):
@@ -31,26 +32,21 @@ def register(request):
     data = {
         'form': CustomUserCreationForm()
     }
-    
+
     if request.method == 'POST':
         user_creation_form = CustomUserCreationForm(data=request.POST)
 
         if user_creation_form.is_valid():
             user_creation_form.save()
             contact(request)
-            
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(request, user)
-
-            return redirect('products')
-        return redirect('home')
-    
-    else:
-        user_creation_form = CustomUserCreationForm()  # Inicializa el formulario en caso de solicitud 'GET'
-
-    data['form'] = user_creation_form
+            return redirect('home')
+        else:
+            data['form'] = user_creation_form
 
     return render(request, 'registration/register.html', data)
+
 
 
 def contact(request):
@@ -79,14 +75,29 @@ def contact(request):
         return redirect('home')
 
 
-
-
-
-
-
 def exit(request):
     logout(request)
     return redirect('home')
+
+
+class carrito():
+    def get(self, request):
+        # Lógica para mostrar el contenido del carrito
+        # Puedes obtener los videojuegos del carrito desde el usuario actual
+        # y renderizarlos en un template
+        videojuegos_en_carrito = []  # ¡Asegúrate de obtener los videojuegos correctamente!
+        total_del_carrito = sum(videojuego.precio for videojuego in videojuegos_en_carrito)
+        return render(request, 'carrito.html', {'videojuegos_en_carrito': videojuegos_en_carrito, 'total_del_carrito': total_del_carrito})
+
+class comprar():
+    def get(self, request, videojuego_id):
+        # Lógica para agregar el videojuego al carrito
+        # Puedes obtener el videojuego por su ID y agregarlo al carrito del usuario actual
+        # videojuego = Videojuego.objects.get(pk=videojuego_id)
+        # Agrega el videojuego al carrito del usuario (debes implementar esta lógica)
+
+        # Después de agregar, redirige a la página del carrito
+        return redirect('carrito')
 
 
 

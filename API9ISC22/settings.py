@@ -43,11 +43,31 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'social_django',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
+# Configuración de autenticación social para Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '7262792113733925'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'e0e06bb5564f0400e751ea03027e208b'
 
+# Proveedores de cuentas sociales configurados, en este caso, para Facebook
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'APP': {
+            'client_id': '7262792113733925',
+            'secret': 'e0e06bb5564f0400e751ea03027e208b',
+        }
+    }
+}
+
+# Configuración de la biblioteca Crispy Forms para usar el paquete de plantillas Bootstrap 5
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +77,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
 
 ROOT_URLCONF = 'API9ISC22.urls'
 
@@ -73,12 +96,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'django.template.context_processors.request',
-                # 'crispy_forms.context_processors.crispy_forms_context',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+                
             ],
-            # 'builtins': [
-            #     'crispy_forms.templatetags.crispy_forms_tags',  # Añade esta línea
-            # ],
         },
     },
 ]
@@ -99,6 +120,13 @@ DATABASES = {
         'PASSWORD': '0SAc4lv6QGtoaG7IMnGEe4DLXokzWVgB',
         'HOST': 'oregon-postgres.render.com',  # O la dirección IP de tu servidor PostgreSQL
         'PORT': '5432',           # Deja en blanco para usar el puerto predeterminado (5432)
+        
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME':'postgres',
+        # 'USER': 'postgres',
+        # 'PASSWORD': '',
+        # 'HOST': 'localhost',  # O la dirección IP de tu servidor PostgreSQL
+        # 'PORT': '5432',           # Deja en blanco para usar el puerto predeterminado (5432)
         
     }
 }
@@ -149,13 +177,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+# Redirección después del inicio de sesión exitoso
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 
-
+# Configuración del modelo de usuario personalizado (descomentar y ajustar según sea necesario)
 # AUTH_USER_MODEL = 'myapp.CustomUser'
+
+# Configuración del backend de correo electrónico para el envío de correos electrónicos
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'victormanuel135613@gmail.com'
-EMAIL_HOST_PASSWORD = 'dbuh omtv odfb isuq'
+EMAIL_HOST_PASSWORD = 'dbuh omtv odfb isuq'  # Clave de la cuenta de correo electrónico
+
+# Configuración de los backends de autenticación
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# settings.py
+
+# Redirigir todas las solicitudes HTTP a HTTPS
+SECURE_SSL_REDIRECT = True
+
+# Utilizar cookies seguras para sesiones y CSRF
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

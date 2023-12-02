@@ -1,28 +1,22 @@
 {% extends 'core/base.html' %}
+
 {% block content %}
   <main class="px-3">
     <h1>Redgames</h1>
 
     {% if request.user.is_authenticated %}
-
-      <p class="lead">{% if request.user.is_authenticated %}Bienvenido {{ user.username | upper }}, {% endif %}. Todos los elementos necesarios para mejorar la experiencia de juego los encontrarás en nuestra tienda. Como nuevo usuario, podrás disfrutar de un 20% de descuento en tu primera compra en línea. ¡No dejes pasar esta oportunidad de mejorar tus experiencias de juego!</p>
-
+      <p class="lead">Bienvenido {% if user.username %}{{ user.username|upper }}, {% endif %}. Todos los elementos necesarios para mejorar la experiencia de juego los encontrarás en nuestra tienda. Como nuevo usuario, podrás disfrutar de un 20% de descuento en tu primera compra en línea. ¡No dejes pasar esta oportunidad de mejorar tus experiencias de juego!</p>
     {% else %}
-
       <p class="lead">Nuestra empresa se especializa en la provisión de materiales clave para mejorar la experiencia de los jugadores en la industria de los videojuegos. Todos nuestros productos vienen respaldados por una garantía extendida de COVER VIDEOJUEGOS, brindándote la seguridad necesaria para ofrecer experiencias de juego excepcionales.</p>
-        {% endif %}
+    {% endif %}
 
-        {% if messages %}
-        {% for message in messages %}
-
-          <div class="alert alert-danger" role="alert">
-            {{message}}
-          </div>
-
-        {% endfor %} 
-      {% endif %}
-
-        
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
 
     <p class="lead">
       <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Acerca de Nosotros...</a>

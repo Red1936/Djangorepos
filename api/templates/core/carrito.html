@@ -1,0 +1,43 @@
+<!-- templates/carrito.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <!-- Incluye los archivos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-4">Carrito de Compras</h1>
+
+        {% if videojuegos_en_carrito %}
+            <ul class="list-group mb-3">
+                {% for videojuego in videojuegos_en_carrito %}
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">{{ videojuego.nombre }}</h6>
+                            <small class="text-muted">Precio: ${{ videojuego.precio }}</small>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="font-weight-bold">Total: ${{ total_del_carrito }}</p>
+            <!-- Agrega un formulario para realizar el pago y finalizar la compra -->
+            <form action="{% url 'procesar_pago' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Realizar Pago</button>
+            </form>
+        {% else %}
+            <p class="text-muted">El carrito está vacío.</p>
+        {% endif %}
+    </div>
+
+    <!-- Incluye los archivos JS de Bootstrap al final del documento para mejorar el rendimiento -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
