@@ -11,61 +11,69 @@
     <title>Redgames </title>
 </head>
 <body>
-   
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'core/img/logo.jpeg' %}" alt="Logo de la marca">
+        </div>
+        
+        <a class="btn" href="{% url 'home' %}"><button>Inicio</button></a>
+        <a class="btn" href="{% url 'articulos' %}"><button>Juegos</button></a> 
+        <a class="btn" href="{% url 'exit' %}"><button>Salir</button></a> 
+    </header>
 
     <section class="contenedor">
         <!-- Contenedor de elementos -->
         <div class="contenedor-items">
             <div class="item">
-                <span class="titulo-item">Box Engasse</span>
+                <span class="titulo-item">Zelda minish</span>
                 <img src="{% static 'core/img/gba1.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$15.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">English Horse</span>
+                <span class="titulo-item">Mario vs DK</span>
                 <img src="{% static 'core/img/gba2.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$25.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Knock Nap</span>
+                <span class="titulo-item">Metroid</span>
                 <img src="{% static 'core/img/gba3.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$35.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">La Night</span>
+                <span class="titulo-item">Yoshi Universal Gravitation</span>
                 <img src="{% static 'core/img/gba4.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$18.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Silver All</span>
+                <span class="titulo-item">Metal slug</span>
                 <img src="{% static 'core/img/gba5.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$32.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Skin Glam</span>
+                <span class="titulo-item">Pokemon Rojo fuego</span>
                 <img src="{% static 'core/img/gba6.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$18.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Midimix</span>
+                <span class="titulo-item">Mario y Luigi superstar saga</span>
                 <img src="{% static 'core/img/gba7.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$54.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Sir Blue</span>
+                <span class="titulo-item">Super Mario3 </span>
                 <img src="{% static 'core/img/gba8.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$32.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Middlesteel</span>
+                <span class="titulo-item">Pokemon Esmeralda</span>
                 <img src="{% static 'core/img/gba9.jpg' %}" alt="" class="img-item">
                 <span class="precio-item">$42.800</span>
                 <button class="boton-item">Agregar al Carrito</button>

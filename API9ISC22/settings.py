@@ -207,18 +207,7 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-# # Configuración para Google Cloud Storage
-# GS_BUCKET_NAME = 'redgames'
-# GOOGLE_APPLICATION_CREDENTIALS = '/path/to/your/credentials.json'
 
-# # Configuración para archivos estáticos
-# STATIC_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
-# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-
-# # Configuración para archivos de medios
-# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-# MEDIA_URL = 'https://storage.googleapis.com/{}/media/'.format(GS_BUCKET_NAME)
-
-
-# https://console.cloud.google.com/storage/browser/redgames
-# gs://redgames
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'bucket-redgames'
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
