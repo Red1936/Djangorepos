@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from social_django.views import complete, disconnect
 
-from api.views import carrito, comprar, exit, home, products, register
+from api.views import articulos, exit, home, products, register
 
 urlpatterns = [
     
@@ -31,8 +31,7 @@ urlpatterns = [
     path('logout/', exit, name='exit'),
     path('register/', register, name='register'),
     path('social-auth/', include('social_django.urls', namespace='social')),
-    
-    path('carrito/', carrito, name='carrito_de_compras'),
-    path('comprar/', comprar,name='comprar_videojuego'),
+    path('articulos/', articulos, name='articulos'),
+
      
 ]

@@ -1,8 +1,10 @@
 {% extends 'core/base.html' %}
 {% block content %}
+{% load static %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
-
+<link href="{% static 'core/css/estilo.css' %}" rel="stylesheet">
+<script src="{% static 'core/js/app.js' %}" async></script>
 
 <div class="container">
   <div class="row my-4">
@@ -16,151 +18,115 @@
   
 
   <main class="px-3">
-  <section class="py-5 text-center">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-12 mx-auto">
-        <h1 class="fw-light">Listado de Juegos</h1>
+    <section class="contenedor">
+      <!-- Contenedor de elementos -->
+      <div class="contenedor-items">
+          <div class="item">
+              <span class="titulo-item">Box Engasse</span>
+              <img src="{% static 'core/img/gba1.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$15.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">English Horse</span>
+              <img src="{% static 'core/img/gba2.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$25.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">Knock Nap</span>
+              <img src="{% static 'core/img/gba3.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$35.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">La Night</span>
+              <img src="{% static 'core/img/gba4.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$18.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">Silver All</span>
+              <img src="{% static 'core/img/gba5.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$32.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">Skin Glam</span>
+              <img src="{% static 'core/img/gba6.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$18.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">Midimix</span>
+              <img src="{% static 'core/img/gba7.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$54.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">Sir Blue</span>
+              <img src="{% static 'core/img/gba8.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$32.000</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
+          <div class="item">
+              <span class="titulo-item">Middlesteel</span>
+              <img src="{% static 'core/img/gba9.jpg' %}" alt="" class="img-item">
+              <span class="precio-item">$42.800</span>
+              <button class="boton-item">Agregar al Carrito</button>
+          </div>
       </div>
-    </div>
+      <!-- Carrito de Compras -->
+      <div class="carrito" id="carrito">
+          <div class="header-carrito">
+              <h2>Tu Carrito</h2>
+          </div>
+
+          <div class="carrito-items">
+              <!-- 
+              <div class="carrito-item">
+                  <img src="img/boxengasse.png" width="80px" alt="">
+                  <div class="carrito-item-detalles">
+                      <span class="carrito-item-titulo">Box Engasse</span>
+                      <div class="selector-cantidad">
+                          <i class="fa-solid fa-minus restar-cantidad"></i>
+                          <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                          <i class="fa-solid fa-plus sumar-cantidad"></i>
+                      </div>
+                      <span class="carrito-item-precio">$15.000,00</span>
+                  </div>
+                 <span class="btn-eliminar">
+                      <i class="fa-solid fa-trash"></i>
+                 </span>
+              </div>
+              <div class="carrito-item">
+                  <img src="img/skinglam.png" width="80px" alt="">
+                  <div class="carrito-item-detalles">
+                      <span class="carrito-item-titulo">Skin Glam</span>
+                      <div class="selector-cantidad">
+                          <i class="fa-solid fa-minus restar-cantidad"></i>
+                          <input type="text" value="3" class="carrito-item-cantidad" disabled>
+                          <i class="fa-solid fa-plus sumar-cantidad"></i>
+                      </div>
+                      <span class="carrito-item-precio">$18.000,00</span>
+                  </div>
+                 <button class="btn-eliminar">
+                      <i class="fa-solid fa-trash"></i>
+                 </button>
+              </div>
+               -->
+          </div>
+          <div class="carrito-total">
+              <div class="fila">
+                  <strong>Tu Total</strong>
+                  <span class="carrito-precio-total">
+                      $120.000,00
+                  </span>
+              </div>
+              <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
+          </div>
+      </div>
   </section>
-
-  <div class="album py-5 bg-dark">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
 
 
